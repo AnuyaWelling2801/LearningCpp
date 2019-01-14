@@ -31,6 +31,40 @@ int main(){
         //iterator also overloads the + operator
     }
     
+    //pre-sized vector, every element initalized to 1
+    vector<double> numbers(20, 1);
+    //Actual number of array you have in the array
+    cout << numbers.size() << endl;
+    //This capacity increases as we add more elements
+    int capacity = numbers.capacity();
+    cout << capacity <<endl;
+    for(int i=0;i<10000;i++){
+        numbers.push_back(i);
+        //capacity increases exponentially
+        if(numbers.capacity()!=capacity){
+            capacity = numbers.capacity();
+            cout << "Capacity : " << numbers.capacity() << endl;
+        }
+        
+    }
+    numbers.clear();
+    cout << "Size after clearing the vector : " << numbers.size() <<endl;
+    //capacity remains the max
+    cout << "Capacity after clearing the vector : " << numbers.capacity() << endl;
+    
+    numbers.resize(100);
+    cout << "Size after resizing the vector : " << numbers.size() <<endl;
+    //capacity remains the max
+    cout << "Capacity after resizing the vector : " << numbers.capacity() << endl;
+    
+    //to change capacity
+    numbers.reserve(1000000);
+    //size remains the same
+    cout << "Size after reserving the vector : " << numbers.size() <<endl;
+    //capacity changes to a greater number, does not change to a lesser number
+    cout << "Capacity after reserving the vector : " << numbers.capacity() << endl;
+
+
     
     
     return 0;
